@@ -10,15 +10,16 @@ const { meats } = require('./models/meats');
 
 // ------------ MIDDLEWARE ------------
 app.set('view engine', 'ejs'); // come back to this
+app.use('/', express.static('public'));
 
 // ------------ ROUTES ---------------
 // ******* FRUITS INDEX ROUTE **********
 app.get('/fruits', (req, res) => {
     // send array as a response
-    res.render('fruits/index', { allFruits: fruits });
+    res.render('fruits/index', { allFruits: fruits, allVeggies: veggies, allMeats: meats });
 });
 
-// ******* FRUTIS SHOW ROUTE **********
+// ******* FRUITS SHOW ROUTE **********
 app.get('/fruits/:indexOfFruitsArray', (req, res) => {
     let idx = parseInt(req.params.indexOfFruitsArray);
     if (idx >= fruits.length) {
@@ -35,7 +36,7 @@ app.get('/fruits/:indexOfFruitsArray', (req, res) => {
 // ****** VEGGIES INDEX ROUTE *******
 app.get('/veggies', (req, res) => {
     // send array as a response
-    res.render('veggies/index', { allVeggies: veggies });
+    res.render('veggies/index', { allFruits: fruits, allVeggies: veggies, allMeats: meats });
 });
 
 
@@ -57,7 +58,7 @@ app.get('/veggies/:indexOfVeggiesArray', (req, res) => {
 
 app.get('/meats', (req, res) => {
     // send array as a response
-    res.render('meats/index', { allMeats: meats });
+    res.render('meats/index', { allFruits: fruits, allVeggies: veggies, allMeats: meats });
 });
 
 
