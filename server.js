@@ -10,13 +10,13 @@ const { fruits } = require('./models/fruits');
 app.set('view engine', 'ejs'); // come back to this
 
 // ------------ ROUTES ---------------
-// ******* INDEX ROUTE **********
+// ******* FRUITS INDEX ROUTE **********
 app.get('/fruits', (req, res) => {
     // send array as a response
-    res.send(fruits);
+    res.render('fruits/index');
 });
 
-// ******* SHOW ROUTE **********
+// ******* FRUTIS SHOW ROUTE **********
 app.get('/fruits/:indexOfFruitsArray', (req, res) => {
     let idx = parseInt(req.params.indexOfFruitsArray);
     if (idx >= fruits.length) {
@@ -28,6 +28,20 @@ app.get('/fruits/:indexOfFruitsArray', (req, res) => {
         res.render('show', { fruit: fruits[idx] });
     }
 });
+
+
+// ****** VEGGIES INDEX ROUTE *******
+
+
+
+// ****** VEGGIES SHOW ROUTE ********
+
+
+// ****** MEATS INDEX ROUTE *******
+
+// ****** MEATS SHOW ROUTE *******
+
+
 
 // ----------- LISTEN FOR SERVER ----------
 app.listen(PORT, () => {

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits</title>
+</head>
+<body>
+    <h1>All Fruits</h1>
+    <% for( let index = 0; index < allFruits.length; index++ ) { %>
+        <% let fruit = allFruits[index] %>
+        <div>
+            <h4><%= fruit.name %></h4>
+            <a href="/fruits/<%= index %>">Checkout more...</a>
+        </div>
+    <% } %>
+</body>
+</html>
