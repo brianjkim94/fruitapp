@@ -83,6 +83,15 @@ app.put('/fruits/:id', (req,res) => {
     res.redirect('/fruits'); // redirect to /fruits route to get to index page
 });
 
+//*****Delete - Delete Fruit *
+
+app.delete('/fruit/:id', (req, res) => {
+    //remove the fruit item from the fruits array
+    fruits.splice(parseInt(req.params.id, 1));
+    console.log(fruits);
+    res.redirect('/fruits'); // redirect back to index page (/fruits)
+});
+
 // ****** VEGGIES INDEX ROUTE *******
 app.get('/veggies', (req, res) => {
     // send array as a response
