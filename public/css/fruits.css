@@ -12,6 +12,10 @@ body {
   color: #edededb6;
 }
 
+.nav a {
+  color: aquamarine
+}
+
 .timeline {
   display: flex;
   justify-content: center;

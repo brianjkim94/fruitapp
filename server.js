@@ -11,12 +11,19 @@ const { meats } = require('./models/meats');
 // ------------ MIDDLEWARE ------------
 app.set('view engine', 'ejs'); // come back to this
 app.use('/', express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 // ------------ ROUTES ---------------
 // ******* FRUITS INDEX ROUTE **********
 app.get('/fruits', (req, res) => {
     // send array as a response
     res.render('fruits/index', { allFruits: fruits, allVeggies: veggies, allMeats: meats });
+});
+
+//***** New Fruits ROUTE **** 
+app.get('/fruits/new',(req, res) => {
+    res.render('fruits/new.ejs', {});
 });
 
 // ******* FRUITS SHOW ROUTE **********
@@ -75,6 +82,35 @@ app.get('/meats/:indexOfMeatsArray', (req, res) => {
     }
 });
 
+
+// ***** FOOD BLOG *****
+// ***** FOOD BLOG INDEX ROUTE *****
+
+app.get('/overnightoats', (req, res) => {
+    res.send('index.ejs')
+});
+
+// ***** FOOD BLOG SHOW ROUTE *****
+app.get('/oohome', (req, res) => {
+    res.send('showHome.ejs')
+});
+
+app.get('/ooabout', (req, res) => {
+    res.send('showAbout.ejs')
+});
+
+// ***** POST NEW FRUIT *****
+app.post('/fruits', (req, res) => {
+    console.log('------ FORM BODY ------\n', req.body);
+    // add more code here
+    if (req.body.readyToEat === 'on') {
+        req.body.readyToEat = true;
+    } else { // req.body.readyToEat will be undefined (unchecked)
+        req.body.readyToEat = false;
+    }
+    fruits.push(req.body);
+    res.redirect('/fruits')
+});
 
 
 // ----------- LISTEN FOR SERVER ----------
