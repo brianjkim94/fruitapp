@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/overnightoats.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Overnight Oats Flavors</title>
+  </head>
+  <body>
+    <section class="timeline">
+      <div class="timeline-row">
+        <div class="timeline-column">
+          <h2 class="title">Overnight Oats<span class="animate" style="--i:1;"></span></h2>
+          <div class="timeline-box">
+            <% for( let index = 0; index < allOoflavors.length; index++ ) { %>
+
+                <% let ooflavor = allOoflavors[index] %>
+                <div class="timeline-content">
+                    <div class="content">
+                      <div class="year"><i class="bx bxs-calendar"></i>2021 - 2022</div>
+                      <h3><%= ooflavor.name %></h3>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+                        voluptate natus consectetur suscipit aspernatur quos obcaecati
+                        dolore veniam debitis omnis.
+                      </p>
+                      <a href="/overnightoats/<%= index %>">Checkout more...</a>
+                    </div>
+                  </div>
+                <div>
+                </div>
+            <% } %>
+
+            <span class="animate" style="--i:2;"></span>
+          </div>
+        </div>
+
+        <div class="timeline-column">
+            <h2 class="title">More Flavors<span class="animate" style="--i:1;"></span></h2>
+            <div class="timeline-box">
+              <% for( let index = 0; index < allOoflavors.length; index++ ) { %>
+  
+                  <% let ooflavor = allOoflavors[index] %>
+                  <div class="timeline-content">
+                      <div class="content">
+                        <div class="year"><i class="bx bxs-calendar"></i>2021 - 2022</div>
+                        <h3><%= ooflavor.name %></h3>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+                          voluptate natus consectetur suscipit aspernatur quos obcaecati
+                          dolore veniam debitis omnis.
+                        </p>
+                        <a href="/overnightoats/<%= index %>">Checkout more...</a>
+                      </div>
+                    </div>
+                  <div>
+                  </div>
+              <% } %>
+  
+              <span class="animate" style="--i:2;"></span>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <script src="/public/JS/ootyped.js"></script>
+  </body>
+</html>

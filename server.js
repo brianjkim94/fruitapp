@@ -8,13 +8,24 @@ const methodOverride = require('method-override');
 const { fruits } = require('./models/fruits');
 const { veggies } = require('./models/veggies');
 const { meats } = require('./models/meats');
+const { ooflavors } = require('./models/overnightoats');
 
 // ------------ MIDDLEWARE ------------
 app.use(methodOverride('_method'));
-app.set('view engine', 'ejs'); // come back to this
+app.set('view engine', 'ejs');
 app.use('/', express.static('public'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
+// add middle for PUT AND DELETE methods
+
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+
+// Serve static files from the 'public' directory
+app.use(express.static(__dirname + '/public'));
+
+
 // add middleware for PUT and DELETE methods
 
 
@@ -43,18 +54,18 @@ app.get('/fruits/:indexOfFruitsArray', (req, res) => {
     }
 });
 
-// ****** GET ROUTE -- EDIT PAGE ******
+// *********** GET - EDIT PAGE **********
 app.get('/fruits/:id/edit', (req, res) => {
     const fruit = fruits[req.params.id];
     let id = parseInt(req.params.id);
     res.render('fruits/edit', { fruit, id });
 });
 
-// **** GET - DELETE PAGE *****
+// ********* GET - DELETE PAGE ************
 app.get('/fruits/:id/delete', (req, res) => {
     const fruit = fruits[req.params.id];
     let id = parseInt(req.params.id);
-    res.sender('fruits/delete', { fruit, id});
+    res.render('fruits/delete', { fruit, id });
 });
 
 
@@ -135,20 +146,22 @@ app.get('/meats/:indexOfMeatsArray', (req, res) => {
 });
 
 
-// ***** FOOD BLOG *****
-// ***** FOOD BLOG INDEX ROUTE *****
+// ***** OVERNIGHT OATS *****
+// ***** OVERNIGHT OATS INDEX ROUTE *****
 
-app.get('/overnightoats', (req, res) => {
-    res.render('overnightoats/index.ejs')
+app.get('/overnightoatshome', (req, res) => {
+    res.render('overnightoats/index.ejs', {});
 });
 
-// ***** FOOD BLOG SHOW ROUTE *****
-app.get('/overnightoats/:oohome', (req, res) => {
-    res.render('/overnightoats/showHome.ejs')
+// ***** OVERNIGHT OATS FLAVOR ROUTE *****
+app.get('/overnightoatsflavors', (req, res) => {
+    // send array as a response
+    res.render('overnightoats/showflavors.ejs', {allOoflavors: ooflavors});
 });
 
+// **** OVERNIGHT OATS ABOUT ROUTE *****
 app.get('/ooabout', (req, res) => {
-    res.send('/overnightoats/showAbout.ejs')
+    res.render('overnightoats/showAbout.ejs', {});
 });
 
 

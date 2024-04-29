@@ -1,14 +1,235 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply styles to the header */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 9%;
-    background: var(--bg-color);
+    padding: 1rem;
+    background-color: aquamarine;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+}
+
+/* Style the image within the header */
+.header-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Style the navigation links */
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar a.active {
+    font-weight: bold;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #1f5ac89e;
+  color: #edededb6;
+}
+
+.nav a {
+  color: aquamarine
+}
+
+.timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 9%;
+}
+.timeline .timeline-row {
+  display: flex;
+  column-gap: 64px;
+  flex-wrap: wrap;
+}
+
+.timeline-row .timeline-column {
+  flex: 1 1 320px;
+}
+
+.timeline-column .title {
+  position: relative;
+  display: inline-block;
+  font-size: 28px;
+  margin: 32px 0 16px 30px;
+}
+
+.timeline-column .timeline-box {
+  position: relative;
+  border-left: 2px solid #0ef;
+}
+
+.timeline-box .timeline-content {
+  position: relative;
+  padding-left: 27px;
+}
+
+.timeline-box .timeline-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10.5px;
+  width: 20px;
+  height: 20px;
+  background: #0ef;
+  border-radius: 50%;
+}
+
+.timeline-content .content {
+  padding: 24px;
+  border: 2px solid #0ef;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.timeline-content .content .year {
+  font-size: 16px;
+  color: ■ #0ef;
+}
+
+.timeline-content .content .year i {
+  margin-right: 8px;
+}
+
+.timeline-content .content h3 {
+  font-size: 19px;
+  margin: 8px 0;
+}
+
+.timeline-content .content p {
+  font-size: 16px;
+}
+
+.animate {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #1f242d;
+  animation: show-right 1s ease forwards;
+  animation-delay: calc(0.5s * var(--i));
+}
+
+@keyframes show-right {
+  100% {
+    width: 0;
+  }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* About section styles */
+.about {
+    padding: 2rem;
+    background-color: #ffef96; /* Light yellow */
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heading {
+    font-size: 2rem;
+    color: #009688; /* Teal */
+    margin-bottom: 1rem;
+}
+
+.heading span {
+    font-weight: bold;
+    color: #ff5722; /* Orange */
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #2196f3; /* Blue */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0d47a1; /* Darker blue on hover */
+}
+
+/* .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 9%; 
+    padding-right: 9%;
+    background: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.navbar a {
+    color: #fff; 
+    font-size: 1.2rem;
+    margin-left: 1rem; 
+    text-decoration: none; 
+}
+
+.navbar a.active {
+    font-weight: bold; 
+}
+
+.header-img img {
+    width: 35vw;
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+.heading {
+    text-align: center;
+    font-size: 4.5rem;
 }
 
 .home {
@@ -84,16 +305,6 @@
     background: var(--second-bg-color);
 }
 
-.header-img img {
-    width: 35vw;
-    animation: floatImage 4s ease-in-out infinite;
-}
-
-.heading {
-    text-align: center;
-    font-size: 4.5rem;
-}
-
 .about-content h2 {
     text-align: left;
     line-height: 1.2;
@@ -106,4 +317,4 @@
 .about-content p{
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
-}
+} */
