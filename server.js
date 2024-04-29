@@ -54,14 +54,14 @@ app.get('/fruits/:indexOfFruitsArray', (req, res) => {
     }
 });
 
-// *********** GET - EDIT PAGE **********
+// *********** FRUITS GET - EDIT PAGE **********
 app.get('/fruits/:id/edit', (req, res) => {
     const fruit = fruits[req.params.id];
     let id = parseInt(req.params.id);
     res.render('fruits/edit', { fruit, id });
 });
 
-// ********* GET - DELETE PAGE ************
+// ********* FRUITS GET - DELETE PAGE ************
 app.get('/fruits/:id/delete', (req, res) => {
     const fruit = fruits[req.params.id];
     let id = parseInt(req.params.id);
@@ -69,9 +69,9 @@ app.get('/fruits/:id/delete', (req, res) => {
 });
 
 
-// ***** POST NEW FRUIT *****
+// ********** POST NEW FRUIT ************
 app.post('/fruits', (req, res) => {
-    console.log('------ FORM BODY ------\n', req.body);
+    console.log('---------- FORM BODY ---------\n', req.body);
     // add more code here
     if (req.body.readyToEat === 'on') {
         req.body.readyToEat = true;
@@ -79,12 +79,12 @@ app.post('/fruits', (req, res) => {
         req.body.readyToEat = false;
     }
     fruits.push(req.body);
-    res.redirect('/fruits')
+    res.redirect('/fruits');
 });
 
-//******PUT - UPDATE FRUIT  */
-app.put('/fruits/:id', (req,res) => {
-    console.log('----UPDATE FRUIT----\n', req.body);
+// ************** PUT - UPDATE FRUIT *************
+app.put('/fruits/:id', (req, res) => {
+    console.log('------- UPDATE FRUIT -------\n', req.body);
     if (req.body.readyToEat === 'on') {
         req.body.readyToEat = true;
     } else {
@@ -94,11 +94,10 @@ app.put('/fruits/:id', (req,res) => {
     res.redirect('/fruits'); // redirect to /fruits route to get to index page
 });
 
-//*****Delete - Delete Fruit *
-
-app.delete('/fruit/:id', (req, res) => {
-    //remove the fruit item from the fruits array
-    fruits.splice(parseInt(req.params.id, 1));
+// ************* DELETE - DELETE FRUIT ***********
+app.delete('/fruits/:id', (req, res) => {
+    // remove the fruit item from the fruits array
+    fruits.splice(parseInt(req.params.id), 1);
     console.log(fruits);
     res.redirect('/fruits'); // redirect back to index page (/fruits)
 });
@@ -109,6 +108,10 @@ app.get('/veggies', (req, res) => {
     res.render('veggies/index', { allFruits: fruits, allVeggies: veggies, allMeats: meats });
 });
 
+//***** NEW VEGGIE ROUTE **** 
+app.get('/veggies/new',(req, res) => {
+    res.render('veggies/new.ejs', {});
+});
 
 // ****** VEGGIES SHOW ROUTE ********
 app.get('/veggies/:indexOfVeggiesArray', (req, res) => {
@@ -123,6 +126,53 @@ app.get('/veggies/:indexOfVeggiesArray', (req, res) => {
     }
 });
 
+// *********** VEGGIES GET - EDIT PAGE **********
+app.get('/veggies/:id/edit', (req, res) => {
+    const veggie = veggies[req.params.id];
+    let id = parseInt(req.params.id);
+    res.render('veggies/edit', { veggie, id });
+});
+
+// ********* VEGGIES GET - DELETE PAGE ************
+app.get('/veggies/:id/delete', (req, res) => {
+    const veggie = veggies[req.params.id];
+    let id = parseInt(req.params.id);
+    res.render('veggies/delete', { veggie, id });
+});
+
+
+// ********** POST NEW VEGGIE ************
+app.post('/veggies', (req, res) => {
+    console.log('---------- FORM BODY ---------\n', req.body);
+    // add more code here
+    if (req.body.readyToEat === 'on') {
+        req.body.readyToEat = true;
+    } else { // req.body.readyToEat will be undefined (unchecked)
+        req.body.readyToEat = false;
+    }
+    veggies.push(req.body);
+    res.redirect('/veggies');
+});
+
+// ************** PUT - UPDATE VEGGIE *************
+app.put('/veggies/:id', (req, res) => {
+    console.log('------- UPDATE FRUIT -------\n', req.body);
+    if (req.body.readyToEat === 'on') {
+        req.body.readyToEat = true;
+    } else {
+        req.body.readyToEat = false;
+    }
+    fruits[parseInt(req.params.id)] = req.body; //
+    res.redirect('/veggies'); // redirect to /fruits route to get to index page
+});
+
+// ************* DELETE - DELETE VEGGIE ***********
+app.delete('/veggies/:id', (req, res) => {
+    // remove the fruit item from the fruits array
+    fruits.splice(parseInt(req.params.id), 1);
+    console.log(veggies);
+    res.redirect('/veggies'); // redirect back to index page (/fruits)
+});
 
 // ****** MEATS INDEX ROUTE *******
 
@@ -131,6 +181,10 @@ app.get('/meats', (req, res) => {
     res.render('meats/index', { allFruits: fruits, allVeggies: veggies, allMeats: meats });
 });
 
+//***** NEW MEAT ROUTE **** 
+app.get('/meats/new',(req, res) => {
+    res.render('meats/new.ejs', {});
+});
 
 // ****** MEATS SHOW ROUTE *******
 app.get('/meats/:indexOfMeatsArray', (req, res) => {
@@ -144,6 +198,56 @@ app.get('/meats/:indexOfMeatsArray', (req, res) => {
         res.render('meats/show', { meat: meats[idx] });
     }
 });
+
+// *********** MEATS GET - EDIT PAGE **********
+app.get('/meats/:id/edit', (req, res) => {
+    const meat = meats[req.params.id];
+    let id = parseInt(req.params.id);
+    res.render('meats/edit', { veggie, id });
+});
+
+// ********* MEATS GET - DELETE PAGE ************
+app.get('/meats/:id/delete', (req, res) => {
+    const meat = meats[req.params.id];
+    let id = parseInt(req.params.id);
+    res.render('meats/delete', { meat, id });
+});
+
+
+// ********** POST NEW MEAT ************
+app.post('/meat', (req, res) => {
+    console.log('---------- FORM BODY ---------\n', req.body);
+    // add more code here
+    if (req.body.readyToEat === 'on') {
+        req.body.readyToEat = true;
+    } else { // req.body.readyToEat will be undefined (unchecked)
+        req.body.readyToEat = false;
+    }
+    meats.push(req.body);
+    res.redirect('/meats');
+});
+
+// ************** PUT - UPDATE MEAT *************
+app.put('/meats/:id', (req, res) => {
+    console.log('------- UPDATE FRUIT -------\n', req.body);
+    if (req.body.readyToEat === 'on') {
+        req.body.readyToEat = true;
+    } else {
+        req.body.readyToEat = false;
+    }
+    fruits[parseInt(req.params.id)] = req.body; //
+    res.redirect('/meats'); // redirect to /fruits route to get to index page
+});
+
+// ************* DELETE - DELETE MEAT ***********
+app.delete('/meats/:id', (req, res) => {
+    // remove the fruit item from the fruits array
+    fruits.splice(parseInt(req.params.id), 1);
+    console.log(meats);
+    res.redirect('/meats'); // redirect back to index page (/fruits)
+});
+
+
 
 
 // ***** OVERNIGHT OATS *****

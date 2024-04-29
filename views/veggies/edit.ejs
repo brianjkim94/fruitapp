@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fruits App</title>
+    <title>Veggie App</title>
 </head>
 <body>
-    <h1>Edit Fruit Page</h1>
-    <form action="/fruits/<%= id %>/?_method=PUT" method="POST">
+    <h1>Edit Veggie Page</h1>
+    <form action="/veggies/<%= id %>/?_method=PUT" method="POST">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<%= fruit.name %>">
+        <input type="text" name="name" id="name" value="<%= veggie.name %>">
         <label for="color">Color</label>
-        <input type="text" name="color" id="color" value="<%= fruit.color %>">
+        <input type="text" name="color" id="color" value="<%= veggie.color %>">
         <label for="readyToEat">Is Ready to Eat?</label>
         <input type="checkbox" name="readyToEat" id="readyToEat"
-        <% if (fruit.readyToEat === true) { %>
+        <% if (veggie.readyToEat === true) { %>
             checked
         <% } %>
         />
-        <input type="submit" value="Edit Fruit">
+        <input type="submit" value="Edit Veggie">
     </form>
 </body>
 </html>
