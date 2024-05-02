@@ -18,17 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // add middle for PUT AND DELETE methods
 
-// Set EJS as the view engine
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
-
-// Serve static files from the 'public' directory
-app.use(express.static(__dirname + '/public'));
-
-
-// add middleware for PUT and DELETE methods
-
-
 // ------------ ROUTES ---------------
 // ******* FRUITS INDEX ROUTE **********
 app.get('/fruits', (req, res) => {
